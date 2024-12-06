@@ -128,8 +128,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -149,17 +147,21 @@ EMAIL_HOST_USER = 'oesigbone@gmail.com'  # Replace with your Gmail email address
 EMAIL_HOST_PASSWORD = 'mgtj dweb qvqb zsgf'  # Replace with your Gmail password or app-specific password
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# This is where the static files will be collected for production (Render or any other cloud service)
 if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Make sure this path exists
+
+    # Enable WhiteNoise to handle static files for production
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# The directories to look for static files (app-level static files and project-level static files)
+# Directories where Django will search for additional static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # project-level static files directory
+    BASE_DIR / 'static',  # Ensure that this directory contains your static files during development
 ]
+
 
 
 MEDIA_URL = 'media/'
