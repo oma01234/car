@@ -1,19 +1,3 @@
-"""
-URL configuration for AutoM project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -21,15 +5,20 @@ from django.views.static import serve
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Admin route
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('', include('Customers.urls')),
-    path('', include('clients.urls')),
-    path('', include('Admins.urls')),
+
+    # Add each app under a different URL prefix
+    path('main/', include('main.urls')),         # For the 'main' app
+    path('customers/', include('Customers.urls')),  # For the 'Customers' app
+    path('clients/', include('clients.urls')),   # For the 'clients' app
+    path('admins/', include('Admins.urls')),     # For the 'Admins' app
+
+    # Serve media files at the correct path
     path('media/<path>', serve, {'document_root': settings.MEDIA_ROOT}),
-    path('media/<path>', serve, {'document_root': settings.STATIC_ROOT}),
 ]
 
+# Serve static and media files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

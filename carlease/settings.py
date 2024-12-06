@@ -29,11 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
 # Add your production hosts (e.g., for Heroku or your custom domain)
 if not DEBUG:
-    ALLOWED_HOSTS += ['https://carlease.onrender.com', 'www.carlease.onrender.com']
+    ALLOWED_HOSTS = ['carlease.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
