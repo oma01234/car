@@ -1,0 +1,18 @@
+<!-- templates/support/contact.html -->
+
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/contact.css' %}">
+<h1>Contact Support</h1>
+
+<p>If you're having trouble with your booking or account, please fill out the form below, and we'll get back to you as soon as possible.</p>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

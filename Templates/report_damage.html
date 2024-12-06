@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/repo_dam.css' %}">
+
+  <div class="report-damage-container">
+    <h2>Report Damage for {{ car.make }} {{ car.model }} ({{ car.year }})</h2>
+
+    <form method="post" class="damage-report-form">
+      {% csrf_token %}
+
+      {% if error %}
+        <p class="error-message">{{ error }}</p>
+      {% endif %}
+
+      <label for="description">Damage Description:</label>
+      <textarea name="description" required placeholder="Describe the damage here..." rows="5"></textarea>
+      <br>
+
+      <label for="damage_cost">Estimated Repair Cost ($):</label>
+      <input type="number" name="damage_cost" required min="0.01" step="0.01" placeholder="Enter estimated cost" />
+      <br>
+
+      <button type="submit" class="submit-btn">Submit Damage Report</button>
+    </form>
+  </div>
+
+{% endblock %}

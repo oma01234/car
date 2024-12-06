@@ -1,0 +1,106 @@
+/* admin_dash.css */
+
+/* General Layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9; /* Background color */
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+}
+
+/* Page Heading */
+.page-heading {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Navigation Menu */
+.admin-nav {
+    margin-bottom: 20px;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.nav-list li {
+    display: inline;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+}
+
+.nav-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Overview Section */
+.overview {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.overview p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Revenue Table */
+.revenue-by-car {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.revenue-by-car table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.revenue-by-car table th, .revenue-by-car table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.revenue-by-car table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.revenue-by-car table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.revenue-by-car table td {
+    color: #333;
+}
+
+/* Footer Styling (if needed) */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}

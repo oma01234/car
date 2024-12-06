@@ -1,0 +1,28 @@
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/man_prof.css' %}">
+<h1>Manage Your Profile</h1>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {{ form.as_p }}  <!-- Render the form fields -->
+
+  <button type="submit">Save Changes</button>
+</form>
+
+<h3>Profile Information</h3>
+<p><strong>Phone Number:</strong> {{ profile.phone_number }}</p>
+<p><strong>Address:</strong> {{ profile.address }}</p>
+<p><strong>Notifications:</strong> {% if profile.receive_notifications %}Enabled{% else %}Disabled{% endif %}</p>
+
+{% if profile.driver_license %}
+  <h3>Driver's License</h3>
+  <img src="{{ profile.driver_license.url }}" alt="Driver's License" style="width: 200px;">
+{% endif %}
+
+<a href="{% url 'customer_home' %}">Back to Home</a>
+
+{% endblock %}

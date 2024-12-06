@@ -1,0 +1,13 @@
+<!-- submit_review.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/sub_rev.css' %}">
+  <h2>Leave a Review for {{ leasing_request.car }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+  </form>
+{% endblock %}

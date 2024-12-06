@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Services</title>
+    <link rel="stylesheet" href="{% static 'styles/base_cus.css' %}?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Add any external CSS/JS libraries here, e.g., Bootstrap or Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'customer_home' %}">Car Rental</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'customer_home' %}">Home</a></li>
+                <li><a href="{% url 'search_car' %}">Search Cars</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'customer_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'profile-explanation' %}">Sign Up</a></li>
+                {% endif %}
+
+                <li><a href="{% url 'contact_support' %}">Contact Support</a></li>
+                <li><a href="{% url 'faq_view' %}">FAQs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        {% block content %}
+        <!-- Content will be injected here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-social" >
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+    </footer>
+
+    <!-- Include JavaScript files here (if any) -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script type="text/javascript">
+        // Check if the page was loaded from the cache
+        if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+            // Force a reload from the server if the page is from cache (back/forward navigation)
+            location.reload(true);
+        }
+    </script>
+</body>
+</html>

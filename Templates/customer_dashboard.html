@@ -1,0 +1,69 @@
+<!-- customer_dashboard.html -->
+
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/cus_dash.css' %}">
+<h2>Your Dashboard</h2>
+
+<h3>Upcoming and Past Rentals</h3>
+<ul>
+  {% for rental in rentals %}
+    <li>
+      <strong>{{ rental.car.make }} {{ rental.car.model }}</strong> |
+      Start: {{ rental.start_date }} |
+      End: {{ rental.end_date }} |
+      Status: {{ rental.status }}
+    </li>
+  {% empty %}
+    <p>No rentals found.</p>
+  {% endfor %}
+</ul>
+
+<h3>Payment History</h3>
+<ul>
+  {% for payment in payments %}
+    <li>
+      Amount: ${{ payment.amount }} | Paid on: {{ payment.paid_at }}
+    </li>
+  {% empty %}
+    <p>No payments found.</p>
+  {% endfor %}
+</ul>
+
+<h3>Your Reviews</h3>
+<h4>Reviews You've Written</h4>
+<ul>
+  {% for review in reviews_written %}
+    <li>
+      Review for {{ review.car.make }} {{ review.car.model }}: {{ review.rating }} stars
+    </li>
+  {% empty %}
+    <p>You haven't written any reviews yet.</p>
+  {% endfor %}
+</ul>
+
+<h4>Reviews You've Received</h4>
+<ul>
+  {% for review in reviews_received %}
+    <li>
+      Review by {{ review.user.username }}: {{ review.rating }} stars
+    </li>
+  {% empty %}
+    <p>You don't have any reviews yet.</p>
+  {% endfor %}
+</ul>
+
+<h3>Pending Actions</h3>
+<ul>
+  {% for request in pending_requests %}
+    <li>
+      Booking Request for {{ request.car.make }} {{ request.car.model }} | Status: {{ request.status }}
+    </li>
+  {% empty %}
+    <p>No pending requests.</p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

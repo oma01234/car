@@ -1,0 +1,128 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main Heading */
+h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Table Rows on Hover */
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Action Buttons Styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* No Cars Message Styling */
+td[colspan="6"] {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
+
+/* Add New Car Button */
+a.add-car {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.add-car:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    a {
+        font-size: 0.9rem;
+    }
+
+    a.add-car {
+        font-size: 1rem;
+    }
+}
+
+.go-to-home-btn {
+  display: inline-block;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.go-to-home-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+

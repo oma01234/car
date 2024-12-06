@@ -1,0 +1,22 @@
+databases:
+  - name: carlease
+    plan: free
+    databaseName: carlease
+    user: carlease
+
+services:
+  - type: web
+    plan: free
+    name: carlease
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn carlease.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: carlease
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

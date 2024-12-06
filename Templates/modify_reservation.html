@@ -1,0 +1,19 @@
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/mod_res.css' %}">
+<h1>Modify Reservation</h1>
+
+<p>Modify your reservation for {{ reservation.car.make }} {{ reservation.car.model }}.</p>
+
+<form method="post">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <button type="submit">Update Reservation</button>
+</form>
+
+<a href="{% url 'booking_history' %}">Back to Booking History</a>
+{% endblock %}

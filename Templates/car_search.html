@@ -1,0 +1,92 @@
+{% extends "base_customer.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/car_search.css' %}">
+
+  <!-- Search Form -->
+  <h1>Car Search</h1>
+  <form method="get">
+    <label for="searched">Search for a car:</label>
+    <input type="text" name="searched" value="{{ searched_car }}" placeholder="Search by name">
+
+    <label for="car_type">Car Type:</label>
+    <select name="car_type">
+      <option value="">--All Types--</option>
+      <option value="sedan" {% if request.GET.car_type == 'sedan' %}selected{% endif %}>Sedan</option>
+      <option value="SUV" {% if request.GET.car_type == 'SUV' %}selected{% endif %}>SUV</option>
+      <option value="electric" {% if request.GET.car_type == 'electric' %}selected{% endif %}>Electric</option>
+      <!-- Add other types -->
+    </select>
+
+    <label for="min_price">Price Range:</label>
+    <input type="number" name="min_price" value="{{ request.GET.min_price }}" placeholder="Min Price" min="0">
+    <input type="number" name="max_price" value="{{ request.GET.max_price }}" placeholder="Max Price" min="0">
+
+    <label for="year">Year:</label>
+    <input type="number" name="year" value="{{ request.GET.year }}" placeholder="Car Year" min="1900" max="2100">
+
+    <label for="mileage">Mileage (km):</label>
+    <input type="number" name="mileage" value="{{ request.GET.mileage }}" placeholder="Max Mileage" min="0">
+
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="{{ request.GET.location }}" placeholder="Location">
+
+    <label for="available_for_testing">Available for Testing:</label>
+    <select name="available_for_testing">
+      <option value="">--Select--</option>
+      <option value="available" {% if request.GET.available_for_testing == 'available' %}selected{% endif %}>Available</option>
+      <option value="not_available" {% if request.GET.available_for_testing == 'not_available' %}selected{% endif %}>Not Available</option>
+    </select>
+
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- Sort & Filter Section -->
+  <h2>Filter & Sort Results</h2>
+<form method="get">
+  <ul class="car-list">
+    {% for car in cars %}
+      <li class="car-item">
+        <h3>{{ car.Car_name }} ({{ car.year }})</h3>
+        <p>Price: ${{ car.price_per_day }} / day</p>
+        <p>{{ car.Description }}</p>
+
+        <!-- Car Comparison Checkbox -->
+        <input type="checkbox" name="compare_cars" value="{{ car.id }}"
+          {% if car.id|stringformat:"d" in selected_car_ids %}checked{% endif %}>
+        Compare
+      </li>
+    {% empty %}
+      <p>No cars found</p>
+    {% endfor %}
+  </ul>
+
+  <button type="submit">Compare Selected Cars</button>
+</form>
+
+<!-- Car Comparison Table -->
+<h2>Comparison</h2>
+{% if selected_cars %}
+  <table class="comparison-table">
+    <tr>
+      <th>Car Name</th>
+      <th>Price</th>
+      <th>Year</th>
+      <th>Features</th>
+      <!-- Add more fields to compare -->
+    </tr>
+    {% for car in selected_cars %}
+      <tr>
+        <td>{{ car.Car_name }}</td>
+        <td>${{ car.price_per_day }}</td>
+        <td>{{ car.year }}</td>
+        <td>{{ car.Description }}</td>
+        <!-- Add more fields to display -->
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>No cars selected for comparison.</p>
+{% endif %}
+{% endblock %}

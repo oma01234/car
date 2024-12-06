@@ -1,0 +1,19 @@
+<!-- templates/car_owner/view_leasing_request.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}View Leasing Request{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/view_lease_req.css' %}">
+  <h1>Leasing Request for {{ leasing_request.car }}</h1>
+  <p>Client: {{ leasing_request.renter }}</p>
+  <p>Lease Dates: {{ leasing_request.start_date }} to {{ leasing_request.end_date }}</p>
+  <p>Status: {{ leasing_request.status }}</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" name="action" value="approve">Approve</button>
+    <button type="submit" name="action" value="reject">Reject</button>
+  </form>
+{% endblock %}

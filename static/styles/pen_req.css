@@ -1,0 +1,45 @@
+/* pending_requests.css */
+
+.container {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.badge {
+    font-size: 14px;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+.btn-sm {
+    font-size: 12px;
+    padding: 6px 12px;
+}

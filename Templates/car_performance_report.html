@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/car_perm.css' %}">
+
+  <!-- Car Performance Analytics Section -->
+  <h2>Car Performance Analytics</h2>
+
+  <!-- Table for Car Performance Data -->
+  <table class="performance-table">
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Rental Frequency</th>
+        <th>Total Income ($)</th>
+        <th>Views</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in performance_data %}
+        <tr>
+          <td>{{ data.car.make }} {{ data.car.model }} ({{ data.car.year }})</td>
+          <td>{{ data.rental_frequency }}</td>
+          <td>${{ data.total_income|floatformat:2 }}</td>
+          <td>{{ data.views }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Recent Performance Section -->
+  <h3>Recent Performance (Last 30 Days)</h3>
+  <ul class="recent-performance-list">
+    {% for car in cars_recent_performance %}
+      <li>{{ car.make }} {{ car.model }} - Rentals: {{ car.leasing_requests.count }} - Views: {{ car.views }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

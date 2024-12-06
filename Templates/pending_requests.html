@@ -1,0 +1,41 @@
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block title %}Pending Requests{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Pending Rental Request</h1>
+
+    {% if pending_requests %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Car Name</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in pending_requests %}
+                    <tr>
+                        <td>{{ request.car.Car_name }} ({{ request.car.year }})</td>
+                        <td>{{ request.created_at }}</td>
+                        <td>
+                            <span class="badge badge-warning">{{ request.status }}</span>
+                        </td>
+                        <td>
+                            <!-- Add action buttons (e.g., cancel request, view details) -->
+                            <a href="{% url 'cancel_request' request.id %}" class="btn btn-danger btn-sm">Cancel</a>
+                            <a href="{% url 'request_detail' request.id %}" class="btn btn-info btn-sm">View Details</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no pending requests at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

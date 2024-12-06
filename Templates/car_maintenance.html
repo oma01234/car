@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/car_main.css' %}">
+
+  <!-- Page Title -->
+  <h2>Maintenance History for {{ car.make }} {{ car.model }} ({{ car.year }})</h2>
+
+  <!-- Maintenance Records Section -->
+  <h3>Maintenance Records</h3>
+  <ul class="maintenance-list">
+    {% for maintenance in maintenances %}
+      <li class="maintenance-item">
+        <strong>{{ maintenance.service_type }}</strong> on {{ maintenance.service_date }}<br>
+        Mileage: {{ maintenance.mileage }} miles<br>
+        Cost: ${{ maintenance.cost }}<br>
+        <p class="maintenance-details">{{ maintenance.details }}</p>
+      </li>
+    {% empty %}
+      <p>No maintenance records available.</p>
+    {% endfor %}
+  </ul>
+
+  <!-- Report Damage Link -->
+  <a href="{% url 'report_damage' car.id renter_id %}" class="btn-report-damage">Report Damage</a>
+
+{% endblock %}

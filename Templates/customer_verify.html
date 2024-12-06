@@ -1,0 +1,21 @@
+<!-- registration_pending.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Pending</title>
+    <link rel="stylesheet" href="{% static 'styles/cus_ver.css' %}">
+</head>
+<body>
+    <div class="container">
+    <form method="POST" action="{% url 'customer_verify_code' %}">
+        {% csrf_token %}
+        <label for="verification_code">Enter Verification Code:</label>
+        <input type="text" id="verification_code" name="verification_code" required>
+        <button type="submit">Verify Code</button>
+    </form>
+    </div>
+</body>
+</html>

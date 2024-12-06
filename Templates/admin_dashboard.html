@@ -1,0 +1,61 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'styles/admin_dash.css' %}">
+
+{% block content %}
+<div class="admin-dashboard container">
+    <h2 class="page-heading">Admin Dashboard</h2>
+
+    <nav class="admin-nav">
+        <ul class="nav-list">
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <!-- Admin Specific Links -->
+                    <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'manage_cars' %}">Manage Cars</a></li>
+                    <li><a href="{% url 'manage_bookings' %}">Manage Bookings</a></li>
+                    <li><a href="{% url 'payment_history' %}">Payment History</a></li>
+                    <li><a href="{% url 'revenue_reports' %}">Revenue Reports</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="overview">
+        <h3>Overview</h3>
+        <p><strong>Total Revenue:</strong> ${{ total_revenue }}</p>
+        <p><strong>Total Bookings:</strong> {{ total_bookings }}</p>
+        <p><strong>Total Cars Managed:</strong> {{ total_cars }}</p>
+    </div>
+
+    <div class="revenue-by-car">
+        <h3>Revenue by Car</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Car</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in car_revenue %}
+                    <tr>
+                        <td>{{ car.make }} {{ car.model }}</td>
+                        <td>${{ car.total_revenue|default:0 }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">No cars have revenue yet.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

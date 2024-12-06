@@ -1,0 +1,15 @@
+<!-- templates/error.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/error.css' %}">
+  <div class="error-container">
+    <h1>Error</h1>
+    <div class="error-message">
+      <p>{{ error }}</p>
+    </div>
+    <a href="{% url 'cars_list' %}" class="btn">Back to Car Listings</a>
+    <a href="{% url 'client_home' %}" class="btn">Back to Home</a>
+  </div>
+{% endblock %}

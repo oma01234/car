@@ -1,0 +1,52 @@
+<!-- owner_profile.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/own_prof.css' %}">
+  <h2>{{ profile.full_name }}'s Profile</h2>
+
+  <div class="profile-info">
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" width="100" height="100">
+    <p>Email: {{ profile.user.email }}</p>
+    <p>Phone: {{ profile.phone_number }}</p>
+    <p>Address: {{ profile.address }}</p>
+    <p>Verification Status: {% if profile.verification_status %}Verified{% else %}Not Verified{% endif %}</p>
+    <p>Verification Date: {% if profile.identity_verified_at %}{{ profile.identity_verified_at }}{% else %}Not Verified Yet{% endif %}</p>
+  </div>
+
+  <h3>Your Cars</h3>
+  <ul>
+    {% for car in cars %}
+      <li>{{ car.make }} {{ car.model }} ({{ car.year }})</li>
+    {% empty %}
+      <p>You have no cars listed.</p>
+    {% endfor %}
+  </ul>
+
+  <h3>Your Bookings</h3>
+  <ul>
+    {% for booking in bookings %}
+      <li>{{ booking.car }} from {{ booking.start_date }} to {{ booking.end_date }} - Status: {{ booking.status }}</li>
+    {% empty %}
+      <p>No current bookings.</p>
+    {% endfor %}
+  </ul>
+
+  <h3>Your Earnings</h3>
+  <p>Total Earnings: ${{ earnings|floatformat:2 }}</p>
+
+
+    <h3>Your Reviews</h3>
+    <ul>
+      {% for review in profile.user.owner_reviews.all %}
+        <li>
+          <strong>{{ review.client.username }}</strong> (Rating: {{ review.rating }} stars)
+          - "{{ review.comment }}"
+        </li>
+      {% empty %}
+        <p>No reviews yet.</p>
+      {% endfor %}
+    </ul>
+
+{% endblock %}

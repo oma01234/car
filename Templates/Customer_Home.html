@@ -1,0 +1,127 @@
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/customer_home.css' %}?v=1">
+<!-- Main container for the homepage -->
+<div class="container my-5">
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h1>Welcome, {{ user.first_name }}!</h1>
+            <p class="lead">Your one-stop platform for booking cars and managing your rentals.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Panels -->
+    <div class="row">
+        <!-- Panel for Bookings -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Your Bookings</h5>
+                </div>
+                <div class="card-body">
+                    <p>You have {{ upcoming_reservations.count }} upcoming reservation(s).</p>
+                    <a href="{% url 'booking_history' %}" class="btn btn-primary">View Bookings</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel for Profile -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title">Profile</h5>
+                </div>
+                <div class="card-body">
+                    <p>Manage your personal details, password, and profile information.</p>
+                    <a href="{% url 'profile' %}" class="btn btn-success">Manage Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel for Car Search -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="card-title">Search Cars</h5>
+                </div>
+                <div class="card-body">
+                    <p>Find and book the perfect car for your next journey.</p>
+                    <a href="{% url 'search_car' %}" class="btn btn-warning">Search Cars</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Section (e.g., Alerts, Messages) -->
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                <strong>Notice:</strong> Don't forget to check out our exclusive offers on rentals!
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title">Your Reviews</h5>
+                </div>
+                <div class="card-body">
+                    <p>You have written {{ reviews_written.count }} reviews.</p>
+                    {% for reservation in reservations %}
+                        <a href="{% url 'leave_review' reservation_id=reservation.id %}" class="btn btn-dark">Write a Review</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="card-title">Received Reviews</h5>
+                </div>
+                <div class="card-body">
+                    <p>You have received {{ reviews_received.count }} reviews.</p>
+                    <a href="{% url 'customer_reviews' %}" class="btn btn-dark">View Reviews</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Requests Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title">Pending Requests</h5>
+                </div>
+                <div class="card-body">
+                    {% if pending_requests %}
+                        <ul>
+                            {% for request in pending_requests %}
+                                <li>{{ request.car.Car_name }} - Status: {{ request.status }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>You have no pending requests at the moment.</p>
+                    {% endif %}
+                    <a href="{% url 'pending_requests' %}" class="btn btn-info">View Pending Requests</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    // Check if the page was loaded from the cache
+    if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+        // Force a reload from the server if the page is from cache (back/forward navigation)
+        location.reload(true);
+    }
+</script>
+{% endblock %}

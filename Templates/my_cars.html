@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/my_cars.css' %}">
+  <h2>My Cars</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Price/Day</th>
+        <th>Availability</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in cars %}
+        <tr>
+          <td>{{ car.make }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.year }}</td>
+          <td>${{ car.price_per_day }}</td>
+          <td>{{ car.available_for_testing }}</td>
+          <td>
+            <a href="{% url 'Edit_post' car.id %}">Edit</a>
+            <a href="{% url 'Delete_post' car.id %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">You don't have any cars listed yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Go to Home button -->
+  <a href="{% url 'client_home' %}" class="go-to-home-btn">Go to Home</a>
+
+  <a href="{% url 'New_Post' %}">Add a new car</a>
+{% endblock %}

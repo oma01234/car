@@ -1,0 +1,133 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/client_home.css' %}?v=1">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="container py-5">
+    <!-- Open Dashboard Button -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Welcome, {{ user.username }}!</h3>
+        <a href="{% url 'client_dashboard' %}" class="btn btn-primary btn-lg">Open Dashboard</a>
+    </div>
+
+    <p>Here's an overview of your current activities:</p>
+
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-4">
+    <div class="list-group">
+        <a href="{% url 'leasing_requests' %}" class="list-group-item list-group-item-action">
+    <i class="fas fa-file-alt"></i>
+    <div class="d-flex align-items-center">
+        <h5 class="mr-3">Leasing Requests:</h5>
+        <p>View your leasing requests</p>
+    </div>
+</a>
+<a href="#" class="list-group-item list-group-item-action">
+    <i class="fas fa-calendar-check"></i>
+    <div class="d-flex align-items-center">
+        <h5 class="mr-3">Current Bookings:</h5>
+        <p>Manage your ongoing bookings</p>
+    </div>
+</a>
+<a href="#" class="list-group-item list-group-item-action">
+    <i class="fas fa-credit-card"></i>
+    <div class="d-flex align-items-center">
+        <h5 class="mr-3">Payment History:</h5>
+        <p>View your payment history</p>
+    </div>
+</a>
+<a href="#" class="list-group-item list-group-item-action">
+    <i class="fas fa-envelope"></i>
+    <div class="d-flex align-items-center">
+        <h5 class="mr-3">Messages:</h5>
+        <p>Send and receive messages</p>
+    </div>
+</a>
+<a href="#" class="list-group-item list-group-item-action">
+    <i class="fas fa-car-side"></i>
+    <div class="d-flex align-items-center">
+        <h5 class="mr-3">Search Cars:</h5>
+        <p>Browse available cars for lease</p>
+    </div>
+</a>
+
+    </div>
+</div>
+
+
+        <!-- Main Content -->
+        <div class="col-md-8">
+            <!-- Leasing Requests Overview -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5>Active Leasing Requests</h5>
+                </div>
+                <div class="card-body">
+                    {% if leasing_requests %}
+                        <ul class="list-group">
+                            {% for request in leasing_requests %}
+                                <li class="list-group-item">
+                                    <h6>{{ request.car.make }} {{ request.car.model }}</h6>
+                                    <p>Status: {{ request.status }}</p>
+                                    <p>Rental Period: {{ request.start_date }} to {{ request.end_date }}</p>
+                                    <a href="{% url 'view_leasing_request' request.pk %}" class="btn btn-primary btn-sm">View Details</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No active leasing requests.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Current Bookings -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5>Current Bookings</h5>
+                </div>
+                <div class="card-body">
+                    {% if current_bookings %}
+                        <ul class="list-group">
+                            {% for booking in current_bookings %}
+                                <li class="list-group-item">
+                                    <h6>{{ booking.car.make }} {{ booking.car.model }}</h6>
+                                    <p>Rental Period: {{ booking.start_date }} to {{ booking.end_date }}</p>
+                                    <p>Total Amount: ${{ booking.total_amount }}</p>
+                                    <p>Status: {{ booking.status }}</p>
+                                    <a href="#" class="btn btn-primary btn-sm">View Details</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No current bookings.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Payment History -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5>Your Payment History</h5>
+                </div>
+                <div class="card-body">
+                    {% if payments %}
+                        <ul class="list-group">
+                            {% for payment in payments %}
+                                <li class="list-group-item">
+                                    <h6>Payment for {{ payment.leasing_request.car.make }} {{ payment.leasing_request.car.model }}</h6>
+                                    <p>Amount Paid: ${{ payment.amount }}</p>
+                                    <p>Date: {{ payment.paid_at }}</p>
+                                    <a href="#" class="btn btn-info btn-sm">View Payment</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No payment history available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

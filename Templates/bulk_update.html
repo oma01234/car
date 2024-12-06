@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/bulk_up.css' %}">
+
+<h2>Bulk Update Cars</h2>
+
+<!-- Form for Bulk Update -->
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Select Cars to Update Section -->
+    <fieldset class="form-section">
+        <legend>Select Cars to Update:</legend>
+        {{ form.cars }}
+    </fieldset>
+
+    <!-- Update Fields Section -->
+    <fieldset class="form-section">
+        <legend>Update Fields:</legend>
+
+        <!-- Price per Day Field -->
+        <label for="price_per_day">Price per Day ($):</label>
+        {{ form.price_per_day }}
+
+        <!-- Availability Field -->
+        <label for="Available_for_testing">Availability:</label>
+        {{ form.Available_for_testing }}
+    </fieldset>
+
+    <!-- Submit Button -->
+    <button type="submit" class="cta-button">Update Selected Cars</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<!-- registration_pending.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Registration Pending</title>
+    <link rel="stylesheet" href="{% static 'styles/client_reg_pend.css' %}"></head>
+<body>
+    <div class="container">
+        <h1>Registration Pending</h1>
+        <p>Thank you for registering!</p>
+        <p>An email has been sent to your registered email address. Please check your inbox and follow the instructions to activate your account.</p>
+        <p class="note">Note: If you don't receive the email within a few minutes, please check your spam folder.</p>
+        <a href="{% url 'client_verify_code' %}" class="btn">Seen Email</a>
+    </div>
+</body>
+</html>

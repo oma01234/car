@@ -1,0 +1,284 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Header */
+.dashboard-header {
+    background-color: #3498db;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* General Navbar Styling */
+.navbar {
+    padding: 0 15px;
+    background-color: #f8f9fa; /* Light gray background for navbar */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db; /* Matching the theme color */
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    margin-left: 20px;
+}
+
+.nav-item .nav-link {
+    color: #333; /* Dark text for the links */
+    font-size: 1rem;
+}
+
+.nav-item .nav-link:hover {
+    color: #3498db; /* Hover effect to match brand color */
+}
+
+/* Navbar toggle button */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    background-color: #333;
+}
+
+/* On smaller screens, make the navbar items collapse into a dropdown */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column; /* Stack the items vertically */
+        width: 100%; /* Ensure the collapse takes full width */
+        margin-top: 10px;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        text-align: center; /* Center the items when collapsed */
+        margin-top: 10px;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        justify-content: center; /* Center the menu on small screens */
+    }
+}
+
+
+.messages {
+    margin-top: 80px;
+    padding: 20px;
+    text-align: center;
+}
+
+.alert-info {
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    color: #31708f;
+}
+
+/* Main Content */
+main {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.dashboard-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #3498db;
+}
+
+section ul {
+    padding-left: 20px;
+}
+
+section ul li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+section ul li:last-child {
+    border-bottom: none;
+}
+
+section ul li a {
+    color: #3498db;
+    margin-left: 10px;
+}
+
+section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Earnings, Leasing, and History Sections */
+.earnings-revenue ul li,
+.leasing-requests ul li,
+.car-history ul li {
+    background-color: #f9f9f9;
+    border: 1px solid #ecf0f1;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.earnings-revenue ul li:hover,
+.leasing-requests ul li:hover,
+.car-history ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.earnings-revenue ul li p,
+.leasing-requests ul li p,
+.car-history ul li p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.car-history ul li h3 {
+    color: #3498db;
+    font-size: 1.1rem;
+}
+
+.car-history ul li p {
+    margin-bottom: 5px;
+}
+
+/* Footer */
+.dashboard-footer {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.dashboard-footer p {
+    margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        margin-left: 10px;
+    }
+
+    .dashboard-container {
+        width: 95%;
+    }
+
+    .messages {
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 0;
+        text-align: center;
+    }
+
+    .dashboard-header .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}

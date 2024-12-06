@@ -1,0 +1,191 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Ensure full height of the page */
+html, body {
+    height: 100%; /* Full height for the page */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Body and Base Styles */
+body {
+    background-color: #f4f4f9; /* Light background for better readability */
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* Allow body to stretch and take up space */
+}
+
+/* Header and Navbar */
+header {
+    background-color: #333; /* Dark header for contrast */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo a {
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .nav-links li {
+    margin: 0;
+}
+
+header .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+header .nav-links a:hover {
+    color: #f39c12; /* Highlight color on hover */
+}
+
+header .nav-links li a.active {
+    color: #f39c12; /* Active link color */
+}
+
+/* Main Content Section */
+main {
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1; /* Makes main content take up remaining space */
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    margin-top: auto;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+footer .footer-links a,
+footer .footer-social a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+footer .footer-links a:hover,
+footer .footer-social a:hover {
+    color: #f39c12; /* Highlight color on hover */
+}
+
+footer .footer-social a {
+    font-size: 1.3rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header .nav-links {
+        display: none; /* Hide navbar on mobile */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header .nav-links.active {
+        display: flex;
+    }
+
+    header .navbar {
+        justify-content: space-between;
+    }
+
+    header .logo a {
+        font-size: 1.5rem;
+    }
+
+    footer .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .footer-links a,
+    footer .footer-social a {
+        margin: 5px 0;
+    }
+
+    /* Hamburger icon styles */
+    header .navbar .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    header .navbar .hamburger div {
+        background-color: white;
+        height: 3px;
+        width: 25px;
+        margin: 5px;
+    }
+}
+
+/* For displaying hamburger on mobile */
+@media (max-width: 768px) {
+    header .hamburger {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        color: white;
+    }
+}

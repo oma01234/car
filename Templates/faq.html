@@ -1,0 +1,17 @@
+<!-- templates/support/faq.html -->
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/faq.css' %}">
+<h1>Frequently Asked Questions (FAQs)</h1>
+
+<ul>
+    {% for faq in faqs %}
+        <li>
+            <h3>{{ faq.question }}</h3>
+            <p>{{ faq.answer }}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

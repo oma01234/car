@@ -1,0 +1,35 @@
+<!-- profile_explanation.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/profile_explanation.css' %}">
+
+<section class="profile-explanation">
+    <h2 class="section-title">Which Profile Should You Choose?</h2>
+    <div class="profile-cards">
+        <!-- Customer Profile Card -->
+        <div class="profile-card">
+            <h3 class="profile-title">Customer (Car Renter)</h3>
+            <img src="{% static 'images/customer_icon.png' %}" alt="Customer Icon" class="profile-icon">
+            <p class="profile-description">
+                As a **Customer**, you can rent cars for personal use! Whether you need a car for a day, a week, or a month,
+                you can browse and book cars from various owners. Enjoy a seamless experience with car listings, availability, and secure payments.
+            </p>
+            <a href="{% url 'customer_register' %}" class="cta-button customer-cta">Register as a Customer</a>
+        </div>
+
+        <!-- Client Profile Card -->
+        <div class="profile-card">
+            <h3 class="profile-title">Client (Car Owner)</h3>
+            <img src="{% static 'images/client_icon.png' %}" alt="Client Icon" class="profile-icon">
+            <p class="profile-description">
+                As a **Client**, you can list your car(s) and rent them out to customers! Earn passive income by allowing others
+                to lease your car. You have full control over availability, pricing, and car condition.
+            </p>
+            <a href="{% url 'client_register' %}" class="cta-button client-cta">Register as a Client</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- templates/car_owner/leasing_requests.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Leasing Requests{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/lease_req.css' %}">
+  <h1>Leasing Requests</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Car</th>
+        <th>Client</th>
+        <th>Dates</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for request in requests %}
+        <tr>
+          <td>{{ request.car }}</td>
+          <td>{{ request.renter }}</td>
+          <td>{{ request.start_date }} to {{ request.end_date }}</td>
+          <td>{{ request.status }}</td>
+          <td>
+            <a href="{% url 'car_owner:view_leasing_request' request.pk %}">View</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

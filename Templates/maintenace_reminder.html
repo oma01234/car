@@ -1,0 +1,18 @@
+<!-- maintenance_reminders.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/main_rem.css' %}">
+  <h2>Upcoming Maintenance Reminders</h2>
+
+  <ul>
+    {% for reminder in reminders %}
+      <li>
+        {{ reminder.car.make }} {{ reminder.car.model }} - {{ reminder.reminder_type }} {{ reminder.reminder_value }} is due on {{ reminder.next_due_date }}.
+      </li>
+    {% empty %}
+      <p>No upcoming maintenance reminders.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

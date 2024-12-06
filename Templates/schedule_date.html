@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Test Drive</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static 'styles/schedule_date.css' %}">
+
+</head>
+<body>
+    <h1>Schedule a Test Drive</h1>
+
+    <div class="form-container">
+        <label for="datepicker">Select a Date:</label>
+        <input type="text" id="datepicker">
+
+        <div class="error-message" id="error-message" style="display: none;">
+            Sorry, the selected date is not available. Please choose a different date.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const unavailableDates = JSON.parse('{{ unavailable_dates|escapejs }}');
+            const today = new Date().toISOString().split('T')[0];
+
+            unavailableDates.push(today); // Add today to unavailable dates
+            flatpickr("#datepicker", {
+                disable: unavailableDates,
+                dateFormat: "Y-m-d",
+                minDate: today, // Disable all dates before today
+                onDayCreate: function(dObj, dStr, fp, dayElem) {
+                    if (unavailableDates.includes(dayElem.dateObj.toISOString().split('T')[0])) {
+                        dayElem.className += " flatpickr-disabled";
+                    }
+                },
+                onChange: function(selectedDates, dateStr, instance) {
+                    const selectedDate = selectedDates[0].toISOString().split('T')[0];
+                    if (unavailableDates.includes(selectedDate)) {
+                        document.getElementById('error-message').style.display = 'block';
+                    } else {
+                        document.getElementById('error-message').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

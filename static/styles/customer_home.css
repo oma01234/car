@@ -1,0 +1,170 @@
+/* General styling for the dashboard page */
+.container {
+    margin-top: 40px;
+}
+
+/* Welcome Section */
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.lead {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card-body {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-body .btn {
+    font-size: 14px;
+    padding: 8px 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card-body .btn:hover {
+    opacity: 0.9;
+}
+
+/* Button color styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+/* Panel Layout */
+.row.mb-4 {
+    margin-bottom: 40px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* Alerts */
+.alert {
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+/* Reviews Section */
+.card-header.bg-dark {
+    background-color: #343a40;
+}
+
+.card-body .btn-dark {
+    background-color: #343a40;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+}
+
+.card-body .btn-dark:hover {
+    background-color: #23272b;
+}
+
+/* Pending Requests Section */
+.card-header.bg-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.card-body ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-body ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    font-size: 16px;
+}
+
+/* Card Body Spacing */
+.card-body {
+    padding: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

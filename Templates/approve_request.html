@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Booking Confirmation{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/approve_re.css' %}">
+
+<div class="approve-request container">
+    <h1 class="page-heading">Confirm Booking for {{ leasing_request.car.make }} {{ leasing_request.car.model }}</h1>
+
+    <div class="booking-details">
+        <p><strong>Client:</strong> {{ leasing_request.renter.username }}</p>
+        <p><strong>Rental Period:</strong> {{ leasing_request.start_date }} to {{ leasing_request.end_date }}</p>
+        <p><strong>Total Price:</strong> ${{ leasing_request.car.price_per_day * (leasing_request.end_date - leasing_request.start_date).days }}</p>
+    </div>
+
+    <form method="POST" class="confirmation-form">
+        {% csrf_token %}
+        <button type="submit" class="cta-button">Confirm Booking</button>
+    </form>
+</div>
+
+{% endblock %}

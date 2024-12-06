@@ -1,0 +1,111 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for content */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Information styling */
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Styling the form buttons */
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 150px;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Approve button */
+button[name="action"][value="approve"] {
+    background-color: #28a745;
+    color: white;
+}
+
+button[name="action"][value="approve"]:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Reject button */
+button[name="action"][value="reject"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+button[name="action"][value="reject"]:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Form layout */
+form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Styling for error message if exists */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        width: 100%;
+        max-width: none;
+        font-size: 14px;
+        padding: 12px 0;
+    }
+
+    form {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Client Review{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/add_cl_rev.css' %}">  <!-- Link to the existing styles -->
+
+<div class="container">
+    <h1 class="page-heading">Add Review for {{ client.username }}</h1>
+
+    <form method="POST" class="review-form">
+        {% csrf_token %}
+
+        <!-- Rating Selection -->
+        <div class="form-group">
+            <label for="rating" class="form-label">Rating:</label>
+            <select name="rating" id="rating" class="form-control" required>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+        </div>
+
+        <!-- Review Textarea -->
+        <div class="form-group">
+            <label for="review" class="form-label">Review:</label>
+            <textarea name="review" id="review" class="form-control" rows="4" required placeholder="Write your review here..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="cta-button">Submit Review</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

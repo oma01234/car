@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Send Message{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/send_mess.css' %}">
+  <h1>Send Message to {{ receiver.username }}</h1>
+
+  <div class="message-container">
+    <form method="POST">
+      {% csrf_token %}
+
+      <label for="message">Message:</label>
+      <textarea name="message" id="message" required></textarea><br><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+{% endblock %}

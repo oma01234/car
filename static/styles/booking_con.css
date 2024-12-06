@@ -1,0 +1,79 @@
+/* General Styles for the Booking Confirmation and Cancellation Pages */
+.booking-confirmation, .cancel-reservation {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-confirmation h1, .cancel-reservation h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.booking-confirmation p, .cancel-reservation p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.booking-confirmation .btn, .cancel-reservation .cta-button {
+    background-color: #f39c12;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.booking-confirmation .btn:hover, .cancel-reservation .cta-button:hover {
+    background-color: #e67e22;
+}
+
+.cancel-reservation .cancel-btn {
+    background-color: #e74c3c;
+    margin-top: 15px;
+}
+
+.cancel-reservation .cancel-btn:hover {
+    background-color: #c0392b;
+}
+
+.link-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.link-back:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .booking-confirmation, .cancel-reservation {
+        padding: 15px;
+    }
+
+    .booking-confirmation h1, .cancel-reservation h1 {
+        font-size: 1.8rem;
+    }
+
+    .booking-confirmation p, .cancel-reservation p {
+        font-size: 1rem;
+    }
+
+    .booking-confirmation .btn, .cancel-reservation .cta-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}

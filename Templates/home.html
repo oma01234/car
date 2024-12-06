@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarLease - Premium Car Leasing</title>
+    <link rel="stylesheet" href="{% static 'styles/landing.css' %}?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">CarLease</div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="{% url 'contact_support' %}">Contact</a></li>
+                    <li><a href="{% url 'login' %}">Log in</a></li>
+                    <li><a href="{% url 'profile-explanation' %}">Sign up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Lease a Car, Drive Your Dream</h1>
+            <p>Flexible, affordable car leasing options for every budget. Get behind the wheel today!</p>
+            <a href="{% url 'profile-explanation' %}" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose CarLease?</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>Flexible Leasing Terms</h3>
+                    <p>Choose from monthly, quarterly, or yearly plans to fit your needs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Wide Selection of Cars</h3>
+                    <p>Pick from a variety of top brands and models. From luxury cars to family vehicles.</p>
+                </div>
+                <div class="feature">
+                    <h3>Affordable Rates</h3>
+                    <p>We offer competitive rates with no hidden fees. Affordable payments for every budget.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Our Leasing Plans</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic Plan</h3>
+                    <p>$299/month</p>
+                    <p>For individuals and small families. Includes a range of economy cars.</p>
+                    <a href="profile-explanation" class="cta-button">Sign Up</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium Plan</h3>
+                    <p>$499/month</p>
+                    <p>Perfect for business professionals. Includes mid-range to luxury cars.</p>
+                    <a href="profile-explanation" class="cta-button">Sign Up</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Luxury Plan</h3>
+                    <p>$799/month</p>
+                    <p>For those who want the best. Includes high-end luxury cars and SUVs.</p>
+                    <a href="profile-explanation" class="cta-button">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Ready to lease your next car? Get in touch with us to find out more about our offerings and make your choice.</p>
+            <br><br>
+            <a href="{% url 'contact_support' %}" class="cta-button">Email Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CarLease. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Link to specific CSS for this page -->
+    <link rel="stylesheet" href="{% static 'styles/booking_con.css' %}">
+
+    <!-- Booking Confirmation Section -->
+    {% if reservation.status == 'confirmed' %}
+        <div class="booking-confirmation">
+            <h1>Booking Confirmation</h1>
+            <p>Your booking has been confirmed!</p>
+            <p><strong>Car:</strong> {{ reservation.car.make }} {{ reservation.car.model }}</p>
+            <p><strong>Rental Period:</strong> {{ reservation.start_date }} to {{ reservation.end_date }}</p>
+            <p><strong>Total Amount:</strong> ${{ reservation.total_amount }}</p>
+            <p><strong>Status:</strong> {{ reservation.status }}</p>
+
+            <!-- Show "Download Rental Agreement" button if the status is confirmed -->
+            <a href="{% url 'car_owner:download_agreement' leasing_request.id %}" class="btn">Download Rental Agreement</a>
+
+            <!-- Confirm Reservation button (for UI purposes, action logic should be added in the backend) -->
+            <button class="cta-button">Confirm Reservation</button>
+        </div>
+    {% endif %}
+
+    <!-- Cancel Reservation Section -->
+    <div class="cancel-reservation">
+        <h1>Cancel Reservation</h1>
+        <p>Are you sure you want to cancel your reservation for <strong>{{ reservation.car.make }} {{ reservation.car.model }}</strong> from <strong>{{ reservation.start_date }}</strong> to <strong>{{ reservation.end_date }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="cta-button cancel-btn">Confirm Cancellation</button>
+        </form>
+
+        <!-- Link to go back to booking history -->
+        <a href="{% url 'booking_history' %}" class="link-back">Back to Booking History</a>
+    </div>
+{% endblock %}

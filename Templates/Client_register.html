@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Register</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'styles/client_reg.css' %}?v=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            const csrftoken = getCookie('csrftoken');
+
+            function csrfSafeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
+            $('#username').on('blur', function() {
+                var username = $(this).val();
+                if (username) {
+                    $.ajax({
+                        url: '{% url "check_username" %}',
+                        data: {'username': username},
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.is_taken) {
+                                alert('This username is already taken.');
+                            }
+                        }
+                    });
+                }
+            });
+
+            $('#email').on('blur', function() {
+                var email = $(this).val();
+                if (email) {
+                    $.ajax({
+                        url: '{% url "check_email" %}',
+                        data: {'email': email},
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.is_taken) {
+                                alert('This email is already registered.');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>User Registration</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{% url 'client_register' %}">
+        {% csrf_token %}
+        <label for="First_name">First Name:</label><br>
+        <input type="text" id="First_name" name="First_name"><br><br>
+
+        <label for="Last_name">Last Name:</label><br>
+        <input type="text" id="Last_name" name="Last_name"><br><br>
+
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" placeholder="Will be used for logging in"><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="phone_number">Phone Number:</label><br>
+        <input type="text" id="phone_number" name="phone_number"><br><br>
+
+        <label for="password1">Password:</label><br>
+        <input type="password" id="password1" name="password1" placeholder="Will be used for logging in"><br><br>
+
+        <label for="password2">Confirm Password:</label><br>
+        <input type="password" id="password2" name="password2"><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

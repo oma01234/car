@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+    <link rel="stylesheet" href="{% static 'styles/new_post.css' %}">
+</head>
+<body>
+    <h1>Create a New Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="make" required><br><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required><br><br>
+
+    <label for="year">Year:</label>
+    <input type="number" id="year" name="year" required><br><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br><br>
+
+    <label for="available_for_testing">Available for Testing:</label>
+    <select id="available_for_testing" name="available_for_testing" required>
+        <option value="available">Available</option>
+        <option value="not_available">Not Available</option>
+    </select><br><br>
+
+    <label for="test_location">Test Drive Location:</label>
+    <input type="text" id="test_location" name="test_location"><br><br>
+
+    <label for="price_per_day">Price per Day:</label>
+    <input type="number" id="price_per_day" name="price_per_day" step="0.01" required><br><br>
+
+    <label for="test_drive_fee">Test Drive Fee:</label>
+    <input type="number" id="test_drive_fee" name="test_drive_fee" step="0.01"><br><br>
+
+    <label for="insurance_document">Insurance Document:</label>
+    <input type="file" id="insurance_document" name="insurance_document"><br><br>
+
+    <label for="rental_agreement_document">Rental Agreement Document:</label>
+    <input type="file" id="rental_agreement_document" name="rental_agreement_document"><br><br>
+
+    <label for="mileage">Mileage:</label>
+    <input type="number" id="mileage" name="mileage" value="0" required><br><br>
+
+    <label for="maintenance_due_date">Maintenance Due Date:</label>
+    <input type="date" id="maintenance_due_date" name="maintenance_due_date"><br><br>
+
+    <label for="pic_url">Car Picture:</label>
+    <input type="file" id="pic_url" name="pic_url" required><br><br>
+
+    <button type="submit">Add Car Listing</button>
+</form>
+
+</body>
+</html>

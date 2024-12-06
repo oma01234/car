@@ -1,0 +1,96 @@
+/* General Styles for Booking History Page */
+h1, h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+/* Reservation List Styles */
+.reservation-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reservation-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-item strong {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.reservation-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Buttons Styles */
+.btn {
+    background-color: #f39c12;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+}
+
+.modify-btn {
+    background-color: #3498db;
+}
+
+.review-btn {
+    background-color: #2ecc71;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Link Styles */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* No Reservations Message */
+p {
+    font-size: 1rem;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 1.8rem;
+    }
+
+    .reservation-item {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}

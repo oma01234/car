@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment Successful{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/pay_succ.css' %}">
+
+  <div class="success-container">
+    <h1>Payment Successful</h1>
+    <p class="thank-you-message">Thank you for your payment. Your booking has been confirmed!</p>
+
+    <div class="payment-details">
+      <h2>Payment Details</h2>
+      <p><strong>Amount Paid:</strong> ${{ payment.amount }}</p>
+      <p><strong>Car:</strong> {{ payment.leasing_request.car.make }} {{ payment.leasing_request.car.model }}</p>
+      <p><strong>Booking Dates:</strong> {{ payment.leasing_request.start_date }} to {{ payment.leasing_request.end_date }}</p>
+    </div>
+
+    <a href="{% url 'home' %}" class="back-home">Back to Home</a>
+  </div>
+
+{% endblock %}

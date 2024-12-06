@@ -1,0 +1,18 @@
+<!-- upload_custom_agreement.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'styles/up_cus_agree.css' %}">
+  <h2>Upload Custom Rental Agreement for {{ car.make }} {{ car.model }}</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="agreement_document">Upload Agreement PDF:</label>
+    <input type="file" name="agreement_document" required>
+    <button type="submit">Upload Agreement</button>
+  </form>
+
+  <a href="{% url 'car_owner:my_listings' %}">Back to My Listings</a>
+{% endblock %}

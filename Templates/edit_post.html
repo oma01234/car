@@ -1,0 +1,117 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/edit_post.css' %}">
+
+  <h1>Edit Car Listing</h1>
+
+  <!-- Display error message if exists -->
+  {% if error %}
+    <div class="error-message">
+      <p>{{ error }}</p>
+    </div>
+  {% endif %}
+
+  <!-- Edit form for car details -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Make -->
+    <div class="form-group">
+      <label for="make">Make:</label>
+      <input type="text" id="make" name="make" value="{{ car.make }}" required><br><br>
+    </div>
+
+    <!-- Model -->
+    <div class="form-group">
+      <label for="model">Model:</label>
+      <input type="text" id="model" name="model" value="{{ car.model }}" required><br><br>
+    </div>
+
+    <!-- Year -->
+    <div class="form-group">
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" value="{{ car.year }}" required><br><br>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required>{{ car.description }}</textarea><br><br>
+    </div>
+
+    <!-- Available for Testing -->
+    <div class="form-group">
+      <label for="available_for_testing">Available for Testing:</label>
+      <select id="available_for_testing" name="available_for_testing" required>
+        <option value="available" {% if car.available_for_testing == "available" %}selected{% endif %}>Available</option>
+        <option value="not_available" {% if car.available_for_testing == "not_available" %}selected{% endif %}>Not Available</option>
+      </select><br><br>
+    </div>
+
+    <!-- Test Drive Location -->
+    <div class="form-group">
+      <label for="test_location">Test Drive Location:</label>
+      <input type="text" id="test_location" name="test_location" value="{{ car.test_location }}"><br><br>
+    </div>
+
+    <!-- Price per Day -->
+    <div class="form-group">
+      <label for="price_per_day">Price per Day:</label>
+      <input type="number" id="price_per_day" name="price_per_day" value="{{ car.price_per_day }}" step="0.01" required><br><br>
+    </div>
+
+    <!-- Test Drive Fee -->
+    <div class="form-group">
+      <label for="test_drive_fee">Test Drive Fee:</label>
+      <input type="number" id="test_drive_fee" name="test_drive_fee" value="{{ car.test_drive_fee }}" step="0.01"><br><br>
+    </div>
+
+    <!-- Insurance Document -->
+    <div class="form-group">
+      <label for="insurance_document">Insurance Document:</label>
+      <input type="file" id="insurance_document" name="insurance_document"><br><br>
+      {% if car.insurance_document %}
+        <a href="{{ car.insurance_document.url }}" target="_blank">View Current Document</a><br><br>
+      {% endif %}
+    </div>
+
+    <!-- Rental Agreement Document -->
+    <div class="form-group">
+      <label for="rental_agreement_document">Rental Agreement Document:</label>
+      <input type="file" id="rental_agreement_document" name="rental_agreement_document"><br><br>
+      {% if car.rental_agreement_document %}
+        <a href="{{ car.rental_agreement_document.url }}" target="_blank">View Current Document</a><br><br>
+      {% endif %}
+    </div>
+
+    <!-- Mileage -->
+    <div class="form-group">
+      <label for="mileage">Mileage:</label>
+      <input type="number" id="mileage" name="mileage" value="{{ car.mileage }}" required><br><br>
+    </div>
+
+    <!-- Maintenance Due Date -->
+    <div class="form-group">
+      <label for="maintenance_due_date">Maintenance Due Date:</label>
+      <input type="date" id="maintenance_due_date" name="maintenance_due_date" value="{{ car.maintenance_due_date }}"><br><br>
+    </div>
+
+    <!-- Car Picture -->
+    <div class="form-group">
+      <label for="pic_url">Car Picture:</label>
+      <input type="file" id="pic_url" name="pic_url"><br><br>
+      {% if car.picurl %}
+        <img src="{{ car.picurl }}" alt="Car Image" style="width: 150px; height: auto;"><br><br>
+      {% endif %}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" class="btn">Update Car Listing</button>
+    </div>
+
+  </form>
+
+  <!-- Back Link -->
+  <a href="{% url 'cars_list' %}" class="btn">Back to Car Listings</a>
+

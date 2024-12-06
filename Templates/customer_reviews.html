@@ -1,0 +1,55 @@
+<!-- customer_reviews.html -->
+
+{% extends 'base_customer.html' %}
+{% load static %}
+
+{% block title %}Customer Reviews{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/cus_rev.css' %}">
+<div class="container my-5">
+    <h1>Customer Reviews</h1>
+
+    <!-- Section for Reviews Written by the User -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h5 class="card-title">Your Reviews</h5>
+        </div>
+        <div class="card-body">
+            {% if reviews_written %}
+                <ul>
+                    {% for review in reviews_written %}
+                        <li>
+                            <strong>{{ review.car.Car_name }} ({{ review.car.year }})</strong> - Rating: {{ review.rating }} Stars
+                            <p>{{ review.review_text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven't written any reviews yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Section for Reviews Received by the User -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="card-title">Reviews You Have Received</h5>
+        </div>
+        <div class="card-body">
+            {% if reviews_received %}
+                <ul>
+                    {% for review in reviews_received %}
+                        <li>
+                            <strong>{{ review.renter.first_name }} {{ review.renter.last_name }} ({{ review.renter.username }})</strong> - Rating: {{ review.rating }} Stars
+                            <p>{{ review.review_text }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You haven't received any reviews yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+/* availability_cal.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);  /* 7 columns for days of the week */
+    grid-gap: 10px;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.day {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.day:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+/* Styling for available and booked dates */
+.day.available {
+    background-color: #28a745;  /* Green for available */
+    color: white;
+}
+
+.day.booked {
+    background-color: #dc3545;  /* Red for booked */
+    color: white;
+}
+
+.day.available:hover {
+    background-color: #218838;  /* Darker green on hover */
+}
+
+.day.booked:hover {
+    background-color: #c82333;  /* Darker red on hover */
+}
+
+p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #555;
+    margin-top: 20px;
+}
