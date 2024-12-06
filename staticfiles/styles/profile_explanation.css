@@ -1,0 +1,92 @@
+/* profile_explanation.css */
+
+/* Container for the whole section */
+.profile-explanation {
+    padding: 40px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Container for the profile cards */
+.profile-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Profile Card styling */
+.profile-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Title */
+.profile-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+/* Profile Icon */
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+/* Profile Description */
+.profile-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Call to Action Buttons */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Customer CTA */
+.customer-cta {
+    background-color: #28a745;
+    color: white;
+}
+
+.customer-cta:hover {
+    background-color: #218838;
+}
+
+/* Client CTA */
+.client-cta {
+    background-color: #007bff;
+    color: white;
+}
+
+.client-cta:hover {
+    background-color: #0056b3;
+}

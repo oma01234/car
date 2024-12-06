@@ -1,0 +1,133 @@
+/* Car Search Styling */
+
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #444;
+    margin-top: 30px;
+}
+
+/* Form and Input Fields */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+form input[type="number"], form select {
+    width: 48%;
+    display: inline-block;
+}
+
+form button {
+    width: auto;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Cars List */
+.car-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.car-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.car-item h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.car-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.car-item input[type="checkbox"] {
+    margin-top: 10px;
+}
+
+.car-item button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.car-item button:hover {
+    background-color: #218838;
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.comparison-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.comparison-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Empty List Message */
+.empty-message {
+    color: #f00;
+    font-weight: bold;
+    text-align: center;
+}

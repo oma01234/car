@@ -1,0 +1,36 @@
+/* customer_reviews.css */
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.card-body ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.card-body li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-body li p {
+    font-size: 14px;
+    color: #555;
+}
+
+.card-body li strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.card-body li span {
+    font-size: 12px;
+    color: #888;
+}

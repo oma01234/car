@@ -1,0 +1,73 @@
+/* approve_re.css */
+
+/* General Layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9; /* Background color */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+/* Page Heading */
+.page-heading {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Booking Details */
+.booking-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.booking-details p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Confirmation Form */
+.confirmation-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Button */
+.cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+.cta-button:focus {
+    outline: none;
+}
+
+/* Footer Styling (if needed) */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}

@@ -1,0 +1,47 @@
+/* General styling for car maintenance history */
+.maintenance-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.maintenance-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.maintenance-item strong {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.maintenance-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.maintenance-details {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Report Damage Button */
+.btn-report-damage {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-report-damage:hover {
+    background-color: #c0392b;
+}
