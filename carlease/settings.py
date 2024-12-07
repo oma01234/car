@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Add your production hosts (e.g., for Heroku or your custom domain)
 if not DEBUG:
@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'carlease.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://carlease:ira2n9UVrRK0mFE8aIWnd5EtEUUeOP3I@dpg-ct9m7i5umphs73fc483g-a:5432/carlease',
+        default='postgresql://carlease:ira2n9UVrRK0mFE8aIWnd5EtEUUeOP3I@dpg-ct9m7i5umphs73fc483g-a.oregon-postgres.render.com/carlease',
         conn_max_age=600
     )
 }
