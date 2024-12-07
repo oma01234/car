@@ -264,8 +264,6 @@ def owner_profile(request):
 
 @login_required
 def new_post(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
 
     if request.method == 'POST':
         # Get data from the form
