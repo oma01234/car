@@ -29,9 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+ALLOWED_HOSTS = ['127.0.0.1']
+
 # Add your production hosts (e.g., for Heroku or your custom domain)
 if not DEBUG:
-    ALLOWED_HOSTS = ['carlease.onrender.com', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['www.carlease.onrender.com', 'https://carlease.onrender.com']
 
 
 # Application definition
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.CacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,11 +89,10 @@ WSGI_APPLICATION = 'carlease.wsgi.application'
 
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # The path to the SQLite database file
+    }
 }
 
 
@@ -175,3 +177,24 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+else:
+    SECURE_SSL_REDIRECT = False
+
+
+
+if DEBUG:
+    CACHE_MIDDLEWARE_SECONDS = 0  # Disable caching in development
+    CACHE_MIDDLEWARE_ALIAS = 'default'  # Ensure cache is cleared every time
+else:
+    CACHE_MIDDLEWARE_SECONDS = 300  # Enable caching in production
+    CACHE_MIDDLEWARE_ALIAS = 'default'  # Use default cache alias
+
+    # You can define your cache backend for production (e.g., Redis, Memcached)
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',  # Or use Redis, Memcached, etc.
+            'LOCATION': 'unique-snowflake',
+        }
+    }
+
+

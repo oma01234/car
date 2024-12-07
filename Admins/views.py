@@ -9,8 +9,7 @@ from django.db.models import Sum
 
 def home(request):
 
-     return render(request,"")
-
+     pass
 
 @staff_member_required
 def admin_dashboard(request):

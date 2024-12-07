@@ -1,14 +1,12 @@
-from django.core.files.storage import FileSystemStorage
-from django.contrib.auth.models import User
 from django.shortcuts import render
-
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib import messages
 from clients.models import Client
 from Customers.models import Customer
 from django.http import JsonResponse
+from django.views.decorators.cache import never_cache
 
+
+@never_cache
 def main(request):
 
     return render(request, 'home.html')
@@ -18,10 +16,6 @@ def profiles_exp(request):
 
     return render(request, 'profile_explanation.html')
 
-
-from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
 
 def user_login(request):
     if request.method == "POST":

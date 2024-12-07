@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('', include('Customers.urls')),
     path('', include('clients.urls')),
-    path('', include('Admins.urls')),
+    path('admin/', include('Admins.urls')),
     path('media/<path>', serve, {'document_root': settings.MEDIA_ROOT}),
     path('media/<path>', serve, {'document_root': settings.STATIC_ROOT}),
 ]
