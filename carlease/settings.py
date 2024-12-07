@@ -190,12 +190,12 @@ else:
     CACHE_MIDDLEWARE_SECONDS = 300  # Enable caching in production
     CACHE_MIDDLEWARE_ALIAS = 'default'  # Use default cache alias
 
-    # You can define your cache backend for production (e.g., Redis, Memcached)
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': 'redis://127.0.0.1:6379/1',  # Your Redis server address and database number
-        }
-    }
+    # # You can define your cache backend for production (e.g., Redis, Memcached)
+    # CACHES = {
+    #     'default': {
+    #         'BACKEND': 'django_redis.cache.RedisCache',
+    #         'LOCATION': 'redis://127.0.0.1:6379/1',  # Your Redis server address and database number
+    #     }
+    # }
 
 
