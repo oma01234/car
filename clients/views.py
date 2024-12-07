@@ -127,16 +127,20 @@ def client_register(request):
         client = Client.objects.create(user=user, First_name=first_name, Last_name=last_name, email=email,
                                        phone_number=phone_number, is_client=True, username=username)
 
-        client.save()
-
         # Send verification email
         send_verification_email(request, user)
+        client.save()
         print('done')
 
         # Redirect to a page informing the user to check their email
-        return render(request, 'client_registration_pending.html')
+        return redirect('client_registration_pending')
 
     return render(request, 'Client_register.html')
+
+
+def client_registration_pending(request):
+
+    return render(request, 'client_registration_pending.html')
 
 
 def check_username(request):
