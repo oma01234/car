@@ -327,7 +327,7 @@ def new_post(request):
             error = f'Error: {str(e)}'
             return render(request, 'back/error.html', {'error': error})
 
-    return render(request, 'New_post.html')
+    return render(request, 'new_post.html')
 
 
 @login_required
