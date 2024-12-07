@@ -136,19 +136,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-STRIPE_TEST_PUBLIC_KEY = 'your-stripe-public-key'
-STRIPE_TEST_SECRET_KEY = 'your-stripe-secret-key'
-STRIPE_WEBHOOK_SECRET = 'your-webhook-signing-secret'
-STRIPE_SECRET_KEY = ''
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587  # TLS port for Gmail
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'oesigbone@gmail.com'  # Replace with your Gmail email address
-EMAIL_HOST_PASSWORD = 'mgtj dweb qvqb zsgf'  # Replace with your Gmail password or app-specific password
-
 # This production code might break development mode, so we check whether we're in DEBUG mode
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
@@ -178,6 +165,18 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    STRIPE_TEST_PUBLIC_KEY = 'your-stripe-public-key'
+    STRIPE_TEST_SECRET_KEY = 'your-stripe-secret-key'
+    STRIPE_WEBHOOK_SECRET = 'your-webhook-signing-secret'
+    STRIPE_SECRET_KEY = ''
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587  # TLS port for Gmail
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = 'oesigbone@gmail.com'  # Replace with your Gmail email address
+    EMAIL_HOST_PASSWORD = 'mgtj dweb qvqb zsgf'  # Replace with your Gmail password or app-specific password
 else:
     SECURE_SSL_REDIRECT = False
 

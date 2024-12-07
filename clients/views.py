@@ -122,13 +122,13 @@ def client_register(request):
         user = User.objects.create_user(username=username, email=email, password=password1, first_name=first_name,
                                         last_name=last_name)
         user.is_active = False
-        user.save()
 
         client = Client.objects.create(user=user, First_name=first_name, Last_name=last_name, email=email,
                                        phone_number=phone_number, is_client=True, username=username)
 
         # Send verification email
         send_verification_email(request, user)
+        user.save()
         client.save()
         print('done')
 
