@@ -143,6 +143,7 @@ def client_registration_pending(request):
     return render(request, 'client_registration_pending.html')
 
 
+@login_required
 def check_username(request):
     username = request.GET.get('username')
     is_taken = User.objects.filter(username=username).exists()
@@ -183,6 +184,7 @@ def send_verification_email(request, user):
     send_mail(subject, plain_message, 'from@example.com', [user.email], html_message=message)
 
 
+@login_required
 def client_logout(request):
 
     logout(request)
@@ -190,6 +192,7 @@ def client_logout(request):
     return redirect('login')
 
 
+@login_required
 def client_change_password(request):
     if not request.user.is_authenticated:
         return redirect('mylogin')
@@ -238,6 +241,7 @@ def client_change_password(request):
     return render(request, 'Client_Home.html')
 
 
+@login_required
 def owner_profile(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -258,6 +262,7 @@ def owner_profile(request):
     })
 
 
+@login_required
 def new_post(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -327,6 +332,7 @@ def new_post(request):
     return render(request, 'New_post.html')
 
 
+@login_required
 def car_detail(request, car_id):
     car = Car.objects.get(id=car_id)
     car.views += 1
@@ -334,6 +340,7 @@ def car_detail(request, car_id):
     return render(request, 'car_owner/car_detail.html', {'car': car})
 
 
+@login_required
 def edit_post(request, pk):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -398,6 +405,7 @@ def edit_post(request, pk):
     return render(request, 'Edit_post.html', {'car': car_})
 
 
+@login_required
 def delete_post(request, pk):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -456,6 +464,7 @@ def delete_post(request, pk):
         return render(request, 'error.html', {'error': error})
 
 
+@login_required
 def my_cars(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -875,6 +884,7 @@ def car_performance_report(request):
     })
 
 
+@login_required
 def submit_review(request, leasing_request_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -907,6 +917,7 @@ def submit_review(request, leasing_request_id):
     return render(request, 'submit_review.html', {'form': form, 'leasing_request': leasing_request})
 
 
+@login_required
 def view_maintenance(request, car_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -917,6 +928,7 @@ def view_maintenance(request, car_id):
     return render(request, 'car_maintenance.html', {'car': car, 'maintenances': maintenances})
 
 
+@login_required
 def report_damage(request, car_id, renter_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -957,6 +969,7 @@ def maintenance_reminders(request):
     return render(request, 'maintenance_reminders.html', {'reminders': reminders})
 
 
+@login_required
 def bulk_update(request):
     if not request.user.is_authenticated:
         return redirect('login')
