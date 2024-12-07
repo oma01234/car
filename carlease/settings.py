@@ -31,7 +31,7 @@ DEBUG = False
 
 # Add your production hosts (e.g., for Heroku or your custom domain)
 if not DEBUG:
-    ALLOWED_HOSTS = ['https://carlease.onrender.com/']
+    ALLOWED_HOSTS = ['carlease.onrender.com']
 else:
     ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -88,11 +88,13 @@ WSGI_APPLICATION = 'carlease.wsgi.application'
 
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # The path to the SQLite database file
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://carlease:ira2n9UVrRK0mFE8aIWnd5EtEUUeOP3I@dpg-ct9m7i5umphs73fc483g-a:5432/carlease',
+        conn_max_age=600
+    )
 }
+
 
 
 # Password validation
@@ -191,8 +193,8 @@ else:
     # You can define your cache backend for production (e.g., Redis, Memcached)
     CACHES = {
         'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',  # Or use Redis, Memcached, etc.
-            'LOCATION': 'unique-snowflake',
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379/1',  # Your Redis server address and database number
         }
     }
 
