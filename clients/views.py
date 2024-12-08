@@ -335,7 +335,7 @@ def car_detail(request, car_id):
     car = Car.objects.get(id=car_id)
     car.views += 1
     car.save()
-    return render(request, 'car_owner/car_detail.html', {'car': car})
+    return render(request, 'car_detail.html', {'car': car})
 
 
 @login_required
@@ -392,7 +392,7 @@ def edit_post(request, pk):
             car_.save()
 
             # Redirect to the car listings page after successful update
-            return redirect('car_list')
+            return redirect('cars_list')
 
         except Exception as e:
             # Catch any unexpected errors and display a generic error message
@@ -400,7 +400,7 @@ def edit_post(request, pk):
             return render(request, 'back/error.html', {'error': error})
 
     # Render the edit form with the current car details
-    return render(request, 'Edit_post.html', {'car': car_})
+    return render(request, 'edit_post.html', {'car': car_})
 
 
 @login_required
@@ -471,6 +471,15 @@ def my_cars(request):
     cars = Car.objects.filter(owner=request.user)
 
     return render(request, 'my_cars.html', {'cars': cars})
+
+
+def my_car_view(request, pk):
+
+    my_car = Car.objects.get(Car, pk=pk)
+
+    context = {'car': my_car}
+
+    return render(request, 'my_car_view.html', context)
 
 
 def client_verify_code(request):

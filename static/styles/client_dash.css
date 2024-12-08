@@ -39,13 +39,13 @@ ul {
 /* General Navbar Styling */
 .navbar {
     padding: 0 15px;
-    background-color: #f8f9fa; /* Light gray background for navbar */
+    background-color: #f8f9fa;
 }
 
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #3498db; /* Matching the theme color */
+    color: #3498db;
 }
 
 .navbar-nav {
@@ -59,12 +59,12 @@ ul {
 }
 
 .nav-item .nav-link {
-    color: #333; /* Dark text for the links */
+    color: #333;
     font-size: 1rem;
 }
 
 .nav-item .nav-link:hover {
-    color: #3498db; /* Hover effect to match brand color */
+    color: #3498db;
 }
 
 /* Navbar toggle button */
@@ -80,14 +80,14 @@ ul {
 /* On smaller screens, make the navbar items collapse into a dropdown */
 @media (max-width: 991px) {
     .navbar-nav {
-        flex-direction: column; /* Stack the items vertically */
-        width: 100%; /* Ensure the collapse takes full width */
+        flex-direction: column;
+        width: 100%;
         margin-top: 10px;
     }
 
     .nav-item {
         margin-left: 0;
-        text-align: center; /* Center the items when collapsed */
+        text-align: center;
         margin-top: 10px;
     }
 
@@ -96,21 +96,8 @@ ul {
     }
 
     .navbar-collapse {
-        justify-content: center; /* Center the menu on small screens */
+        justify-content: center;
     }
-}
-
-
-.messages {
-    margin-top: 80px;
-    padding: 20px;
-    text-align: center;
-}
-
-.alert-info {
-    background-color: #d9edf7;
-    border: 1px solid #bce8f1;
-    color: #31708f;
 }
 
 /* Main Content */
@@ -174,7 +161,7 @@ section ul li a:hover {
     padding: 10px 20px;
     background-color: #3498db;
     color: white;
-    border-radius: 4px;
+    border-radius: 5px;
     text-align: center;
     font-size: 1rem;
     margin-bottom: 20px;
@@ -183,6 +170,106 @@ section ul li a:hover {
 
 .btn:hover {
     background-color: #2980b9;
+}
+
+.add-listing-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.add-listing-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Car Listing Section */
+.my-listings ul {
+    padding-left: 20px;
+}
+
+.car-listing {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.car-listing:hover {
+    transform: translateY(-5px);
+}
+
+.car-details {
+    flex: 1;
+}
+
+.car-details h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.car-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #7f8c8d;
+}
+
+.car-details strong {
+    color: #2c3e50;
+}
+
+.listing-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.listing-actions .btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.listing-actions .btn:hover {
+    background-color: #2980b9;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.view-car-btn {
+    background-color: #2ecc71;
+}
+
+.view-car-btn:hover {
+    background-color: #27ae60;
+}
+
+.empty-list {
+    text-align: center;
+    font-size: 18px;
+    color: #7f8c8d;
+    font-weight: bold;
 }
 
 /* Earnings, Leasing, and History Sections */

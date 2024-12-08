@@ -30,6 +30,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 
+@login_required
 def customer_home(request):
 
     # person = Customer.objects.filter(customer_name=icon)
@@ -93,16 +94,17 @@ def customer_register(request):
         user = User.objects.create_user(username=username, email=email, password=password1, first_name=first_name,
                                         last_name=last_name)
         user.is_active = False
-        user.save()
         print('created')
 
         customer = Customer.objects.create(user=user, First_name=first_name, Last_name=last_name, email=email,
                                            phone_number=phone_number, is_customer=True, username=username)
 
-        customer.save()
+
 
         # Send verification email
         send_verification_email(request, user)
+        user.save()
+        customer.save()
         print('okay')
 
         # Redirect to a page informing the user to check their email
@@ -190,6 +192,7 @@ def error_page(request):
     return render(request, 'error.html', {'error': error_message})
 
 
+@login_required
 def customer_logout(request):
 
     logout(request)
@@ -197,6 +200,7 @@ def customer_logout(request):
     return redirect('login')
 
 
+@login_required
 def customer_change_password(request):
 
     if not request.user.is_authenticated:
@@ -248,6 +252,7 @@ def customer_change_password(request):
     return render(request, 'Customer_Home.html')
 
 
+@login_required
 def car_detail(request, car_id):
     car = get_object_or_404(Car, id=car_id)
 
@@ -260,6 +265,7 @@ def car_detail(request, car_id):
     })
 
 
+@login_required
 def schedule_date(request):
 
     unavailable_dates = list(Dates.objects.values_list('Scheduled_date', flat=True))
@@ -392,11 +398,6 @@ def booking_confirmation(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
 
     return render(request, 'car/booking_confirmation.html', {'reservation': reservation})
-
-
-from django.shortcuts import render, get_object_or_404
-from django.utils import timezone
-from datetime import timedelta
 
 
 def availability_calendar(request, car_id):
@@ -640,6 +641,7 @@ def faq_view(request):
     return render(request, 'faq.html', {'faqs': faqs})
 
 
+@login_required
 def confirm_booking(request, car_id):
     if request.method == 'POST':
         car = Car.objects.get(id=car_id)
@@ -666,6 +668,7 @@ def confirm_booking(request, car_id):
         return redirect('booking_success')  # Redirect to a success page
 
 
+@login_required
 def notify_waitlist_user(car):
     # Get all users on the waitlist for this car
     waitlist_users = Waitlist.objects.filter(car=car)

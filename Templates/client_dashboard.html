@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'client_home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'search_car' %}">Search Cars</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'cars_list' %}">View cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     {% if user.is_authenticated %}
@@ -64,27 +64,31 @@
     <!-- My Listings Section -->
           <br>
     <section class="my-listings">
-      <h2>My Listings</h2>
-      <a href="{% url 'New_Post' %}" class="btn">Add New Car Listing</a>
-      <ul>
-        {% for car in cars %}
-          <li>
-            <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
-            <p>{{ car.description }}</p>
-            <p>Price per Day: ${{ car.price_per_day }}</p>
-            <p>Status: {% if car.is_active %}Active{% else %}Inactive{% endif %}</p>
-            <p>Available for Test Drive: {% if car.Available_for_testing == 'available' %}Yes{% else %}No{% endif %}</p>
-            <p>Test Drive Fee: ${{ car.test_drive_fee }}</p>
-            <p>Test Drive Location: {{ car.test_location }}</p>
-            <a href="{% url 'Edit_post' car.id %}">Edit</a> |
-            <a href="{% url 'Delete_post' car.id %}">Delete</a>
-          </li>
-        {% empty %}
-          <p>You have no car listings.</p>
-        {% endfor %}
-      </ul>
-    </section>
-
+  <h2>My Listings</h2>
+  <a href="{% url 'New_Post' %}" class="btn add-listing-btn">Add New Car Listing</a>
+  <ul>
+    {% for car in cars %}
+      <li class="car-listing">
+        <div class="car-details">
+          <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
+          <p class="description">{{ car.description }}</p>
+          <p><strong>Price per Day:</strong> ${{ car.price_per_day }}</p>
+          <p><strong>Status:</strong> {% if car.is_active %}Active{% else %}Inactive{% endif %}</p>
+          <p><strong>Available for Test Drive:</strong> {% if car.Available_for_testing == 'available' %}Yes{% else %}No{% endif %}</p>
+          <p><strong>Test Drive Fee:</strong> ${{ car.test_drive_fee }}</p>
+          <p><strong>Test Drive Location:</strong> {{ car.test_location }}</p>
+        </div>
+        <div class="listing-actions">
+          <a href="{% url 'Edit_post' car.id %}" class="btn">Edit</a> |
+          <a href="{% url 'Delete_post' car.id %}" class="btn delete-btn">Delete</a>
+          <a href="{% url 'View_car' car.id %}" class="btn view-car-btn">View Car</a>
+        </div>
+      </li>
+    {% empty %}
+      <p class="empty-list">You have no car listings.</p>
+    {% endfor %}
+  </ul>
+</section>
     <!-- Leasing Requests Section -->
     <section class="leasing-requests">
       <h2>Leasing Requests</h2>

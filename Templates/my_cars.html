@@ -25,6 +25,7 @@
           <td>${{ car.price_per_day }}</td>
           <td>{{ car.available_for_testing }}</td>
           <td>
+            <a href="{% url 'view_car' car.id %}">View</a>
             <a href="{% url 'Edit_post' car.id %}">Edit</a>
             <a href="{% url 'Delete_post' car.id %}">Delete</a>
           </td>
