@@ -32,6 +32,6 @@
 
     <!-- Leave Review Button (only for car owners) -->
     {% if user == car.owner %}
-        <a href="{% url 'leave_review' reservation_id=reservation.id %}" class="btn-leave-review">Leave a Review</a>
+        <a href="{% url 'leave_review' reservation_id=car.pk %}" class="btn-leave-review">Leave a Review</a>
     {% endif %}
 {% endblock %}
